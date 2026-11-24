@@ -1,6 +1,7 @@
 /* THE AIRCREST — fleet selector
  *
- * To add, remove or change an aircraft, edit the FLEET list below.
+ * To add, remove or change an aircraft, edit the FLEET list below (English)
+ * and the FLEET_FR list (French) in the same order.
  * Each entry needs:
  *   tab      short label shown on the selector button
  *   maker    small title (manufacturer + family)
@@ -56,7 +57,55 @@
     }
   ];
 
-  var OVERVIEW_LABEL = "All classes";
+
+  var FLEET_FR = [
+    {
+      tab: "Léger", maker: "Embraer Phenom", model: "300E", sub: "Jet léger",
+      desc: "Le jet léger le plus vendu de la dernière décennie : rapide, sobre et confortable pour 9 passagers maximum sur les vols régionaux.",
+      desc2: "Idéal pour les voyages d’affaires et les week-ends jusqu’à environ quatre heures de vol : Paris–Nice, Genève, Londres ou Ibiza.",
+      specs: [["Catégorie", "Jet léger"], ["Vitesse de croisière", "≈ 860 km/h"], ["Passagers", "6 à 9"],
+              ["Autonomie", "≈ 3 700 km"], ["Bagages", "≈ 2,4 m³"], ["Vol type", "Jusqu’à 4 heures"]],
+      cabin: [["Longueur cabine", "5,2 m"], ["Largeur cabine", "1,55 m"], ["Hauteur cabine", "1,50 m"]]
+    },
+    {
+      tab: "Intermédiaire", maker: "Cessna Citation", model: "Latitude", sub: "Jet intermédiaire",
+      desc: "Une cabine où l’on se tient debout, un plancher plat et des sièges larges : le confort d’un jet intermédiaire, à un excellent rapport qualité-prix, jusqu’à 9 passagers.",
+      desc2: "Confortable sur les longs trajets européens et les traversées de l’Atlantique avec escale, avec un grand volume pour les bagages.",
+      specs: [["Catégorie", "Jet intermédiaire"], ["Vitesse de croisière", "≈ 830 km/h"], ["Passagers", "7 à 9"],
+              ["Autonomie", "≈ 5 000 km"], ["Bagages", "≈ 3,6 m³"], ["Vol type", "Jusqu’à 6 heures"]],
+      cabin: [["Longueur cabine", "6,6 m"], ["Largeur cabine", "1,96 m"], ["Hauteur cabine", "1,83 m"]]
+    },
+    {
+      tab: "Super-intermédiaire", maker: "Bombardier Challenger", model: "350", sub: "Jet super-intermédiaire",
+      desc: "L’un des jets d’affaires les plus appréciés au monde, avec une cabine large, un vol silencieux et une grande autonomie.",
+      desc2: "Relie Paris sans escale à la plupart des villes d’Europe, d’Afrique du Nord et du Moyen-Orient, dans le confort d’un véritable bureau volant.",
+      specs: [["Catégorie", "Jet super-intermédiaire"], ["Vitesse de croisière", "≈ 870 km/h"], ["Passagers", "8 à 10"],
+              ["Autonomie", "≈ 5 900 km"], ["Bagages", "≈ 3,0 m³"], ["Vol type", "Jusqu’à 7 heures"]],
+      cabin: [["Longueur cabine", "7,7 m"], ["Largeur cabine", "2,19 m"], ["Hauteur cabine", "1,83 m"]]
+    },
+    {
+      tab: "Lourd", maker: "Dassault Falcon", model: "900LX", sub: "Jet lourd",
+      desc: "Un triréacteur français réputé pour l’élégance de sa cabine, sa capacité à utiliser des pistes courtes et sa grande fiabilité.",
+      desc2: "Assez spacieux pour les familles et les délégations, avec salons et couchettes pour les vols de nuit entre continents.",
+      specs: [["Catégorie", "Jet lourd"], ["Vitesse de croisière", "≈ 850 km/h"], ["Passagers", "12 à 14"],
+              ["Autonomie", "≈ 8 800 km"], ["Bagages", "≈ 3,6 m³"], ["Vol type", "Jusqu’à 10 heures"]],
+      cabin: [["Longueur cabine", "10,1 m"], ["Largeur cabine", "2,34 m"], ["Hauteur cabine", "1,88 m"]]
+    },
+    {
+      tab: "Très long-courrier", maker: "Bombardier Global", model: "7500", sub: "Jet très long-courrier",
+      desc: "Le fleuron de l’aviation privée : quatre espaces de vie, un véritable lit et l’autonomie pour rejoindre presque toute destination sans escale.",
+      desc2: "Paris–Los Angeles, Singapour ou Le Cap sans escale, pour arriver reposé dans une cabine pensée comme une résidence privée.",
+      specs: [["Catégorie", "Jet très long-courrier"], ["Vitesse de croisière", "≈ 950 km/h"], ["Passagers", "Jusqu’à 19"],
+              ["Autonomie", "≈ 14 200 km"], ["Bagages", "≈ 5,4 m³"], ["Vol type", "Jusqu’à 17 heures"]],
+      cabin: [["Longueur cabine", "16,6 m"], ["Largeur cabine", "2,44 m"], ["Hauteur cabine", "1,88 m"]]
+    }
+  ];
+
+  var FR_PAGE = (document.documentElement.lang || "").toLowerCase().indexOf("fr") === 0;
+  if (FR_PAGE) FLEET = FLEET_FR;
+  var OVERVIEW_LABEL = FR_PAGE ? "Toutes" : "All classes";
+  var NO_PREF = FR_PAGE ? "Sans préférence" : "No preference";
+  var OUR_FLEET = FR_PAGE ? "Notre flotte" : "Our fleet";
 
   function q(key) { return document.querySelectorAll('[data-fleet="' + key + '"]'); }
   function setText(key, text) { q(key).forEach(function (el) { el.textContent = text; }); }
@@ -76,7 +125,7 @@
     a.specs.forEach(function (p, i) { setText("sl" + i, p[0]); setText("sv" + i, p[1]); });
     a.cabin.forEach(function (p, i) { setText("cl" + i, p[0]); setText("cv" + i, p[1]); });
     var field = document.getElementById("Aircraft");
-    if (field) field.value = a.overview ? "No preference" : (a.maker + " " + a.model);
+    if (field) field.value = a.overview ? NO_PREF : (a.maker + " " + a.model);
   }
 
   function init() {
@@ -103,7 +152,7 @@
         b.setAttribute("role", "tab");
         b.className = "aircrest-fleet-tab";
         b.textContent = a.tab;
-        b.title = a.overview ? "Our fleet" : a.maker + " " + a.model;
+        b.title = a.overview ? OUR_FLEET : a.maker + " " + a.model;
         b.addEventListener("click", function () {
           current = i; apply(list[i]); render();
         });

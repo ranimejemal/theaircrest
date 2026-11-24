@@ -1,18 +1,42 @@
-# The Aircrest
+# THE AIRCREST
 
-Static one-page website for The Aircrest, a private jet charter brand.
+Website for THE AIRCREST, a Paris-based private jet charter broker.
+Static site hosted on Vercel: every push to `main` is deployed automatically.
 
-Open `index.html` in a browser, or serve the folder with any static host (GitHub Pages, Netlify, Vercel).
+## Pages
 
-## Before going live
+| Path | Page |
+|---|---|
+| `/` (`index.html`) | Homepage, English |
+| `/fr/` (`fr/index.html`) | Homepage, French |
+| `/privacy-policy.html` · `/fr/confidentialite.html` | Privacy policy (GDPR), EN / FR. PDF: `assets/THE-AIRCREST-Privacy-Policy.pdf` |
+| `/mentions-legales.html` | Legal notice (French law) |
+| `/conditions-generales.html` | Terms of sale (CGV) |
+| `404.html` | Shown by Vercel for any unknown URL |
 
-- **Images, stylesheet and scripts** are still loaded from the original Webflow CDN (`cdn.prod.website-files.com`). Those photos and files belong to the original site, can disappear at any time, and should be replaced with your own copies.
-- **Contact details** are placeholders: `ranimejmal@gmail.com` and `+33 6 24 97 99 41`.
-- **Booking form** posts to `https://formspree.io/f/YOUR_FORM_ID`. Create a form on Formspree (or another form service) and put its URL in the form's `action` attribute.
-- **Figures** (5K+ flights, 174 countries, home base "Paris, France") came from the original site. Update them with your own numbers.
-- **Privacy policy:** `privacy-policy.html` (PDF copy in `assets/`) follows the GDPR and French law (Paris home base). Replace the placeholder phone number, confirm `ranimejmal@gmail.com` exists, and have it reviewed by a lawyer.
+## Flight requests
 
-## Brand colors — Black Cherry × White
+The "Request a Flight" form (`js/booking.js`) emails each request to **ranimejmal@gmail.com** through
+[FormSubmit](https://formsubmit.co) (free, no account):
+
+1. **One-time activation:** the first request sent from the live site triggers an email from FormSubmit
+   to that address. Click **Activate Form** in it. Until then, requests are not delivered.
+2. Each email includes name, email, phone, passengers, from, to, dates and the aircraft the visitor
+   was viewing in the fleet section. Reply directly to the email to answer the client.
+3. To change the receiving address, edit `EMAIL` at the top of `js/booking.js` (it must be activated again).
+
+## Fleet
+
+The fleet selector is driven by `js/fleet.js`. Edit the `FLEET` list (English) and `FLEET_FR` list (French),
+keeping them in the same order. Each aircraft has a tab label, name, two descriptions, six specs and three
+cabin dimensions. Figures are indicative manufacturer values; individual aircraft vary by operator.
+
+## Analytics
+
+Vercel Web Analytics is already included on every page (cookieless, no consent banner needed).
+Turn it on once in Vercel: Project → **Analytics** → **Enable**.
+
+## Brand
 
 | Role | Color |
 |---|---|
@@ -21,14 +45,18 @@ Open `index.html` in a browser, or serve the folder with any static host (GitHub
 | Deep cinematic backgrounds (Obsidian Black) | `#080608` |
 | Secondary light surfaces (Soft White) | `#F5F2F2` |
 
-The colors live in `css/aircrest.webflow.css` (a recolored copy of the Webflow stylesheet) and in the inline `<style>` blocks in `index.html`. The `aircrest-theme` block at the end of `<head>` grades photography to black & white; delete its `img{filter:grayscale(1)}` line to restore the original photo colors.
+- **Colors** live in `css/aircrest.webflow.css` and the inline `<style>` blocks in `index.html`.
+  Photography is graded to black and white by the `img{filter:grayscale(1)}` rule in the `aircrest-theme` block.
+- **Fonts:** Archivo (SIL Open Font License, free for commercial use), self-hosted in `assets/fonts/`.
+- **Logo:** `assets/logo/` has the full logo, wordmark and wings emblem in white and Black Cherry
+  (SVG, plus PNG for the full logo), the favicons and the link-preview image.
 
-## Logo
+## Still to do
 
-Vector files are in `assets/logo/`, traced from the official artwork:
-
-- `aircrest-logo-full-*`: wordmark with wings
-- `aircrest-wordmark-*`: "THEAIRCREST" only (used in the header and hero)
-- `aircrest-emblem-*`: wings only (used in the small logo spots)
-
-Each comes in `-white` (for Black Cherry / Obsidian backgrounds) and `-cherry` (for white / Soft White backgrounds), as SVG, plus PNG for the full logo. On the website the logo uses `currentColor`, so it switches between white and Black Cherry with the section it sits on. `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and `og-image.png` (link previews) are made from it too.
+- **Legal details:** fill in every `[À COMPLÉTER]` in `mentions-legales.html` and `conditions-generales.html`
+  (company form, capital, address, RCS/SIRET, VAT number, publication director, payment and cancellation
+  terms, consumer mediator), then have a French lawyer review them and the privacy policy.
+- **Photos:** the photographs (hero window, clouds, jet, cabin and benefit photos) still load from the
+  original site's Webflow CDN and belong to its owner. Replace them with your own or licensed images.
+- **Domain:** connect your domain in Vercel (Project → Settings → Domains), then update the
+  `https://theaircrest.vercel.app` links in the `<head>` of `index.html`, `fr/index.html` and `404.html`.

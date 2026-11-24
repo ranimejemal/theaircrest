@@ -8,7 +8,7 @@
 <link href="/assets/logo/favicon.svg" rel="icon" type="image/svg+xml">
 <link href="/assets/logo/favicon-32.png" rel="icon" type="image/png" sizes="32x32">
 <link href="/assets/logo/apple-touch-icon.png" rel="apple-touch-icon">
-<link href="/css/aircrest.webflow.css" rel="stylesheet" type="text/css">
+<link rel="preload" href="/assets/fonts/aircrest-expanded-500.woff2" as="font" type="font/woff2" crossorigin/><link rel="preload" href="/assets/fonts/aircrest-extended-500.woff2" as="font" type="font/woff2" crossorigin/><link rel="preload" href="/assets/fonts/aircrest-extended-700.woff2" as="font" type="font/woff2" crossorigin/><link href="/css/aircrest.webflow.css" rel="stylesheet" type="text/css">
 <style>
   :root{--cherry:#390B16;--white:#FFFFFF;--obsidian:#080608;--soft:#F5F2F2;--muted:#7E7C7D;--line:#390B161f}
   *{box-sizing:border-box}
@@ -65,7 +65,7 @@
     .p-sec{break-inside:avoid-page}
   }
 </style>
-</head>
+<script defer src="/_vercel/insights/script.js"></script></head>
 <body class="policy">
 
 <header class="p-head">
@@ -161,7 +161,8 @@
       <h2>Cookies &amp; similar technologies</h2>
       <ul>
         <li><strong>Essential technologies</strong> keep the website secure and working properly.</li>
-        <li><strong>Analytics and marketing cookies</strong> are not currently used on this website. If we introduce them, we will only activate them with your prior consent, as the CNIL’s guidelines require, and you will be able to change or withdraw it at any time. You can also manage cookies in your browser settings, although some features may not work without them.</li>
+        <li><strong>Audience measurement:</strong> we use Vercel Web Analytics to count visits and see which pages are viewed. It sets no cookies, does not track you across websites and does not store your IP address or any other information that identifies you, so it does not require your consent.</li>
+        <li><strong>Advertising and marketing cookies</strong> are not used on this website. If we ever introduce them, we will only activate them with your prior consent, as the CNIL’s guidelines require, and you will be able to change or withdraw it at any time.</li>
       </ul>
     </section>
 
@@ -169,7 +170,7 @@
       <h2>Who we share your data with</h2>
       <p>We share personal data only when necessary, and only with parties bound by confidentiality and security obligations:</p>
       <ul>
-        <li>Providers of website hosting, form handling, communications, customer management and similar services, acting on our instructions.</li>
+        <li>Providers acting on our instructions: Vercel (website hosting and anonymous audience measurement), FormSubmit (delivery of flight requests to our inbox) and our email provider.</li>
         <li>Aircraft operators, crew and ground-handling partners, to the extent needed to deliver the flight you request.</li>
         <li>Professional advisers, such as auditors and lawyers.</li>
         <li>Authorities and regulators, where the law requires it.</li>
