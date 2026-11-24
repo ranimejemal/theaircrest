@@ -21,7 +21,8 @@ The "Request a Flight" form (`js/booking.js`) emails each request to **ranimejma
 
 1. **One-time activation:** the first request sent from the live site triggers an email from FormSubmit
    to that address. Click **Activate Form** in it. Until then, requests are not delivered.
-2. Each email includes name, email, phone, passengers, from, to, dates and the aircraft the visitor
+2. "From" and "To" are country dropdowns (`js/countries.js`, popular countries first; edit `POPULAR` to change them).
+   Each email includes name, email, phone, passengers, from, to, dates and the aircraft the visitor
    was viewing in the fleet section. Reply directly to the email to answer the client.
 3. To change the receiving address, edit `EMAIL` at the top of `js/booking.js` (it must be activated again).
 
