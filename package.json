@@ -1,0 +1,10 @@
+{
+  "name": "theaircrest",
+  "private": true,
+  "type": "module",
+  "description": "THE AIRCREST website: static pages plus the /api/flight-request Vercel function.",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "nodemailer": "10.3.1"
+  }
+}

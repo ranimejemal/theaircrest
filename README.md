@@ -16,15 +16,21 @@ Static site hosted on Vercel: every push to `main` is deployed automatically.
 
 ## Flight requests
 
-The "Request a Flight" form (`js/booking.js`) emails each request to **ranimejmal@gmail.com** through
-[FormSubmit](https://formsubmit.co) (free, no account):
+The "Request a Flight" form (`js/booking.js`) sends each request to the Vercel function
+`api/flight-request.js`, which emails it in the brand design from **"The Aircrest" <ranimejmal@gmail.com>**:
 
-1. **One-time activation:** the first request sent from the live site triggers an email from FormSubmit
-   to that address. Click **Activate Form** in it. Until then, requests are not delivered.
-2. "From" and "To" are country dropdowns (`js/countries.js`, popular countries first; edit `POPULAR` to change them).
-   Each email includes name, email, phone, passengers, from, to, dates and the aircraft the visitor
-   was viewing in the fleet section. Reply directly to the email to answer the client.
-3. To change the receiving address, edit `EMAIL` at the top of `js/booking.js` (it must be activated again).
+- **To you:** a "Nouvelle demande de vol" email with every detail; reply to it to write to the client.
+- **To the client:** a confirmation in their language (French or English).
+
+**Setup (once):** in Vercel → Project → Settings → **Environment Variables**, add
+`GMAIL_USER` = `ranimejmal@gmail.com` and `GMAIL_APP_PASSWORD` = a Google app password
+(Google Account → Security → 2-Step Verification on → **App passwords**), then redeploy.
+Optional: `NOTIFY_TO` (another inbox for notifications), `SENDER_NAME` (default "The Aircrest").
+
+**Backup:** until those variables exist, or if Gmail refuses to send, the site falls back to FormSubmit
+(already activated for ranimejmal@gmail.com), so no request is lost.
+
+"From" and "To" are country dropdowns (`js/countries.js`, popular countries first; edit `POPULAR` to change them).
 
 ## Fleet
 

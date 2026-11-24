@@ -1,27 +1,20 @@
 /* THE AIRCREST — flight request form
  *
- * Main channel: the Supabase Edge Function `flight-request` (supabase/functions/flight-request).
- * It saves the request in Supabase and emails you and the client from "The Aircrest".
- * Backup channel: FormSubmit (formsubmit.co) — used only if Supabase cannot be reached
- * or could not send your notification email, so no request is ever lost.
- *
- * SUPABASE_FUNCTION_URL: https://<project-ref>.supabase.co/functions/v1/flight-request
- * Leave it empty to use FormSubmit only.
+ * Main channel: the Vercel function /api/flight-request (api/flight-request.js).
+ * It emails you and the client from "The Aircrest" <your Gmail> in the brand design.
+ * Backup channel: FormSubmit (formsubmit.co) — used automatically if the function is
+ * not configured yet (no Gmail app password) or cannot send, so no request is ever lost.
  */
 (function () {
-  var SUPABASE_FUNCTION_URL = "";
-  var SUPABASE_ANON_KEY = "";          // public "anon" key: safe to publish
+  var API_URL = "/api/flight-request";
   var EMAIL = "ranimejmal@gmail.com";  // FormSubmit backup address
   var FORMSUBMIT = "https://formsubmit.co/ajax/" + EMAIL;
 
   function frDate(v) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || ""); return m ? m[3] + "/" + m[2] + "/" + m[1] : (v || ""); }
 
-  function viaSupabase(raw, lang) {
-    if (!SUPABASE_FUNCTION_URL) return Promise.reject(new Error("not configured"));
-    var headers = { "Content-Type": "application/json" };
-    if (SUPABASE_ANON_KEY) { headers.apikey = SUPABASE_ANON_KEY; headers.Authorization = "Bearer " + SUPABASE_ANON_KEY; }
-    return fetch(SUPABASE_FUNCTION_URL, {
-      method: "POST", headers: headers,
+  function viaApi(raw, lang) {
+    return fetch(API_URL, {
+      method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: raw.Name, email: raw.Email, phone: raw.Phone, passengers: raw.Passengers,
         from: raw.From, to: raw.To, departure: raw["Departure-date"], "return": raw["Return-date"],
@@ -71,12 +64,11 @@
       if (raw.website) { sending = false; return; } // spam bot
       var lang = (document.documentElement.lang || "en").slice(0, 2) === "fr" ? "fr" : "en";
 
-      viaSupabase(raw, lang)
+      viaApi(raw, lang)
         .then(function (res) {
-          if (res.success && res.ownerEmail) return res;                 // saved + you were emailed
-          if (res.success) return viaFormSubmit(raw, lang).catch(function () { return res; }); // saved, email backup
-          if (res.status === 422 || res.status === 429) throw new Error(res.message || "rejected");
-          return viaFormSubmit(raw, lang);                                // Supabase down: backup
+          if (res.success) return res;                                    // emailed from The Aircrest
+          if (res.status === 422) throw new Error(res.message || "invalid"); // bad input: show error
+          return viaFormSubmit(raw, lang);                                // not configured / failed: backup
         }, function () { return viaFormSubmit(raw, lang); })
         .then(function () {
           form.style.display = "none";
