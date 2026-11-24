@@ -22,3 +22,13 @@ Open `index.html` in a browser, or serve the folder with any static host (GitHub
 | Secondary light surfaces (Soft White) | `#F5F2F2` |
 
 The colors live in `css/aircrest.webflow.css` (a recolored copy of the Webflow stylesheet) and in the inline `<style>` blocks in `index.html`. The `aircrest-theme` block at the end of `<head>` grades photography to black & white; delete its `img{filter:grayscale(1)}` line to restore the original photo colors.
+
+## Logo
+
+Vector files are in `assets/logo/`, traced from the official artwork:
+
+- `aircrest-logo-full-*`: wordmark with wings
+- `aircrest-wordmark-*`: "THEAIRCREST" only (used in the header and hero)
+- `aircrest-emblem-*`: wings only (used in the small logo spots)
+
+Each comes in `-white` (for Black Cherry / Obsidian backgrounds) and `-cherry` (for white / Soft White backgrounds), as SVG, plus PNG for the full logo. On the website the logo uses `currentColor`, so it switches between white and Black Cherry with the section it sits on. `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and `og-image.png` (link previews) are made from it too.
