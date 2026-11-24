@@ -24,12 +24,21 @@
       sending = true;
       if (fail) fail.style.display = "none";
 
-      var data = {};
-      new FormData(form).forEach(function (v, k) { if (k !== "checkbox") data[k] = v; });
-      var route = (data.From || "?") + " → " + (data.To || "?");
-      data._subject = "New flight request: " + route + " (" + (data["Departure-date"] || "date tbc") + ")";
-      data._template = "table";
-      data._replyto = data.Email || "";
+      var raw = {};
+      new FormData(form).forEach(function (v, k) { if (k !== "checkbox") raw[k] = String(v).trim(); });
+      function d(v) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || ""); return m ? m[3] + "/" + m[2] + "/" + m[1] : (v || ""); }
+      var page = (document.documentElement.lang || "en").slice(0, 2) === "fr" ? "Français" : "English";
+      // Field names as they appear in the email you receive
+      var data = {
+        "Nom": raw.Name, "E-mail": raw.Email, "Téléphone": raw.Phone, "Passagers": raw.Passengers,
+        "Départ": raw.From, "Arrivée": raw.To,
+        "Date de départ": d(raw["Departure-date"]), "Date de retour": d(raw["Return-date"]) || "Aller simple",
+        "Appareil consulté": raw.Aircraft, "Langue du site": page
+      };
+      data._subject = "Nouvelle demande de vol : " + (raw.From || "?") + " → " + (raw.To || "?") +
+        (raw["Departure-date"] ? ", le " + d(raw["Departure-date"]) : "");
+      data._template = "box";
+      data._replyto = raw.Email || "";
 
       fetch(ENDPOINT, {
         method: "POST",
