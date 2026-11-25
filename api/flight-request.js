@@ -12,6 +12,8 @@
 // Optional:
 //   NOTIFY_TO           where request notifications go (default: GMAIL_USER)
 //   SENDER_NAME         display name on emails (default: The Aircrest)
+//   SHEETS_WEBHOOK_URL  Google Apps Script web app that logs each request in a Google Sheet
+//   SHEETS_TOKEN        shared secret for that web app (see integrations/google-sheet/Code.gs)
 // While GMAIL_APP_PASSWORD is missing the function answers 503 and the website
 // falls back to FormSubmit, so no request is lost.
 
@@ -124,6 +126,27 @@ export function buildEmails(r, from, notifyTo, when = new Date()) {
   return { owner, client };
 }
 
+// Log the request in the Google Sheet (optional). Never blocks or fails the request.
+export async function logToSheet(r, fetchImpl = fetch) {
+  const url = env("SHEETS_WEBHOOK_URL"), token = env("SHEETS_TOKEN");
+  if (!url || !token) return false;
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 5000);
+    const resp = await fetchImpl(url, {
+      method: "POST", headers: { "Content-Type": "application/json" }, signal: ctrl.signal, redirect: "follow",
+      body: JSON.stringify({ token, request: { ...r, departure: frDate(r.departure), ret: r.ret ? frDate(r.ret) : "" } }),
+    });
+    clearTimeout(t);
+    const j = await resp.json().catch(() => ({}));
+    if (!j.ok) console.error("sheet log refused:", j.error || resp.status);
+    return Boolean(j.ok);
+  } catch (e) {
+    console.error("sheet log failed:", e && e.message);
+    return false;
+  }
+}
+
 function transport() {
   if (env("MAIL_TEST") === "1") return nodemailer.createTransport({ jsonTransport: true });
   return nodemailer.createTransport({
@@ -146,6 +169,8 @@ export default async function handler(req, res) {
   const { r, bad } = validate(b);
   if (bad.length) return res.status(422).json({ success: false, message: "Invalid fields", fields: bad });
 
+  const sheet = await logToSheet(r);
+
   const user = env("GMAIL_USER");
   if (env("MAIL_TEST") !== "1" && (!user || !env("GMAIL_APP_PASSWORD"))) {
     return res.status(503).json({ success: false, message: "Email not configured" });
@@ -163,5 +188,5 @@ export default async function handler(req, res) {
   let clientEmail = true;
   try { await mail.sendMail(client); } catch (e) { clientEmail = false; console.error("client email failed:", e && e.message); }
 
-  return res.status(200).json({ success: true, ownerEmail: true, clientEmail });
+  return res.status(200).json({ success: true, ownerEmail: true, clientEmail, sheet });
 }

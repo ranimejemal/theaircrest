@@ -32,6 +32,18 @@ Optional: `NOTIFY_TO` (another inbox for notifications), `SENDER_NAME` (default 
 
 "From" and "To" are country dropdowns (`js/countries.js`, popular countries first; edit `POPULAR` to change them).
 
+## Google Sheet of requests (optional)
+
+Every request can also be added as a row in a Google Sheet (date, status, client details, route, dates),
+with a status dropdown (Nouvelle / Devis envoyé / Réservée / Perdue / Spam).
+Follow the 5 setup steps at the top of `integrations/google-sheet/Code.gs`, then add
+`SHEETS_WEBHOOK_URL` and `SHEETS_TOKEN` in Vercel and redeploy.
+
+## WhatsApp
+
+A WhatsApp button (bottom right, both languages) opens a chat with +33 6 24 97 99 41 and a pre-filled
+message. To change the number, edit the `wa.me/33624979941` link at the end of `index.html` and `fr/index.html`.
+
 ## Fleet
 
 The fleet selector is driven by `js/fleet.js`. Edit the `FLEET` list (English) and `FLEET_FR` list (French),
@@ -63,7 +75,9 @@ Turn it on once in Vercel: Project → **Analytics** → **Enable**.
 - **Legal details:** fill in every `[À COMPLÉTER]` in `mentions-legales.html` and `conditions-generales.html`
   (company form, capital, address, RCS/SIRET, VAT number, publication director, payment and cancellation
   terms, consumer mediator), then have a French lawyer review them and the privacy policy.
-- **Photos:** the photographs (hero window, clouds, jet, cabin and benefit photos) still load from the
-  original site's Webflow CDN and belong to its owner. Replace them with your own or licensed images.
-- **Domain:** connect your domain in Vercel (Project → Settings → Domains), then update the
-  `https://theaircrest.vercel.app` links in the `<head>` of `index.html`, `fr/index.html` and `404.html`.
+- **Photos:** the photographs (hero window, clouds, jet, cabin plan, benefit photos and globe render) still
+  load from the original site's Webflow CDN and belong to its owner. Replace them with your own or licensed
+  images. Every other file (scripts, fonts, masks, icons, map) is hosted in this repo (`js/vendor/`, `assets/`).
+- **Domain:** connect your domain in Vercel (Project → Settings → Domains), then replace
+  `https://theaircrest.vercel.app` in `index.html`, `fr/index.html`, `404.html`, `sitemap.xml`, `robots.txt`
+  and `api/flight-request.js`, and submit `sitemap.xml` in Google Search Console.
