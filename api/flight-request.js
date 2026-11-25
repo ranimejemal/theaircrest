@@ -157,6 +157,18 @@ function transport() {
 
 export default async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
+  // GET /api/flight-request?check=1 → which settings exist (yes/no only, never their values)
+  if (req.method === "GET" && req.query && req.query.check) {
+    const url = env("SHEETS_WEBHOOK_URL");
+    return res.status(200).json({
+      GMAIL_USER: Boolean(env("GMAIL_USER")),
+      GMAIL_APP_PASSWORD: Boolean(env("GMAIL_APP_PASSWORD")),
+      SHEETS_WEBHOOK_URL: Boolean(url),
+      SHEETS_WEBHOOK_URL_looks_valid: /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(url),
+      SHEETS_TOKEN: Boolean(env("SHEETS_TOKEN")),
+      vercel_env: process.env.VERCEL_ENV || "unknown",
+    });
+  }
   if (req.method !== "POST") { res.setHeader("Allow", "POST"); return res.status(405).json({ success: false, message: "Method not allowed" }); }
 
   let b = req.body;
