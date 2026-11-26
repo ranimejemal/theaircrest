@@ -18,7 +18,7 @@
     {
       tab: "Light", maker: "Embraer Phenom", model: "300E", sub: "Light Jet",
       desc: "The best-selling light jet of the last decade: fast, efficient and comfortable for up to 9 guests on regional flights.",
-      desc2: "Ideal for business trips and weekend escapes of up to around four hours, such as Paris to Nice, Geneva, London or Ibiza.",
+      desc2: "Ideal for business trips and weekend escapes of up to around four hours, such as Tunis to Paris, Nice, Geneva or Rome.",
       specs: [["Class", "Light jet"], ["Cruise speed", "≈ 860 km/h"], ["Passengers", "6 to 9 guests"],
               ["Range", "≈ 3,700 km"], ["Baggage", "≈ 2.4 m³"], ["Typical flight", "Up to 4 hours"]],
       cabin: [["Cabin length", "5.2 m"], ["Cabin width", "1.55 m"], ["Cabin height", "1.50 m"]]
@@ -34,7 +34,7 @@
     {
       tab: "Super-midsize", maker: "Bombardier Challenger", model: "350", sub: "Super-Midsize Jet",
       desc: "One of the most popular business jets in the world, with a wide cabin, quiet ride and coast-to-coast range.",
-      desc2: "Links Paris non-stop with most of Europe, North Africa and the Middle East in spacious, office-like comfort.",
+      desc2: "Links Tunis non-stop with all of Europe, the Gulf and West Africa in spacious, office-like comfort.",
       specs: [["Class", "Super-midsize jet"], ["Cruise speed", "≈ 870 km/h"], ["Passengers", "8 to 10 guests"],
               ["Range", "≈ 5,900 km"], ["Baggage", "≈ 3.0 m³"], ["Typical flight", "Up to 7 hours"]],
       cabin: [["Cabin length", "7.7 m"], ["Cabin width", "2.19 m"], ["Cabin height", "1.83 m"]]
@@ -50,7 +50,7 @@
     {
       tab: "Ultra-long-range", maker: "Bombardier Global", model: "7500", sub: "Ultra-Long-Range Jet",
       desc: "The flagship of private aviation: four living spaces, a full-size bed and the range to fly almost anywhere non-stop.",
-      desc2: "Paris to Los Angeles, Singapore or Cape Town without a stop, arriving rested in a cabin designed like a private residence.",
+      desc2: "Tunis to Los Angeles, Singapore or Cape Town without a stop, arriving rested in a cabin designed like a private residence.",
       specs: [["Class", "Ultra-long-range jet"], ["Cruise speed", "≈ 950 km/h"], ["Passengers", "Up to 19 guests"],
               ["Range", "≈ 14,200 km"], ["Baggage", "≈ 5.4 m³"], ["Typical flight", "Up to 17 hours"]],
       cabin: [["Cabin length", "16.6 m"], ["Cabin width", "2.44 m"], ["Cabin height", "1.88 m"]]
@@ -62,7 +62,7 @@
     {
       tab: "Léger", maker: "Embraer Phenom", model: "300E", sub: "Jet léger",
       desc: "Le jet léger le plus vendu de la dernière décennie : rapide, sobre et confortable pour 9 passagers maximum sur les vols régionaux.",
-      desc2: "Idéal pour les voyages d’affaires et les week-ends jusqu’à environ quatre heures de vol : Paris–Nice, Genève, Londres ou Ibiza.",
+      desc2: "Idéal pour les voyages d’affaires et les week-ends jusqu’à environ quatre heures de vol : Tunis–Paris, Nice, Genève ou Rome.",
       specs: [["Catégorie", "Jet léger"], ["Vitesse de croisière", "≈ 860 km/h"], ["Passagers", "6 à 9"],
               ["Autonomie", "≈ 3 700 km"], ["Bagages", "≈ 2,4 m³"], ["Vol type", "Jusqu’à 4 heures"]],
       cabin: [["Longueur cabine", "5,2 m"], ["Largeur cabine", "1,55 m"], ["Hauteur cabine", "1,50 m"]]
@@ -78,7 +78,7 @@
     {
       tab: "Super-intermédiaire", maker: "Bombardier Challenger", model: "350", sub: "Jet super-intermédiaire",
       desc: "L’un des jets d’affaires les plus appréciés au monde, avec une cabine large, un vol silencieux et une grande autonomie.",
-      desc2: "Relie Paris sans escale à la plupart des villes d’Europe, d’Afrique du Nord et du Moyen-Orient, dans le confort d’un véritable bureau volant.",
+      desc2: "Relie Tunis sans escale à toute l’Europe, au Golfe et à l’Afrique de l’Ouest, dans le confort d’un véritable bureau volant.",
       specs: [["Catégorie", "Jet super-intermédiaire"], ["Vitesse de croisière", "≈ 870 km/h"], ["Passagers", "8 à 10"],
               ["Autonomie", "≈ 5 900 km"], ["Bagages", "≈ 3,0 m³"], ["Vol type", "Jusqu’à 7 heures"]],
       cabin: [["Longueur cabine", "7,7 m"], ["Largeur cabine", "2,19 m"], ["Hauteur cabine", "1,83 m"]]
@@ -94,7 +94,7 @@
     {
       tab: "Très long-courrier", maker: "Bombardier Global", model: "7500", sub: "Jet très long-courrier",
       desc: "Le fleuron de l’aviation privée : quatre espaces de vie, un véritable lit et l’autonomie pour rejoindre presque toute destination sans escale.",
-      desc2: "Paris–Los Angeles, Singapour ou Le Cap sans escale, pour arriver reposé dans une cabine pensée comme une résidence privée.",
+      desc2: "Tunis–Los Angeles, Singapour ou Le Cap sans escale, pour arriver reposé dans une cabine pensée comme une résidence privée.",
       specs: [["Catégorie", "Jet très long-courrier"], ["Vitesse de croisière", "≈ 950 km/h"], ["Passagers", "Jusqu’à 19"],
               ["Autonomie", "≈ 14 200 km"], ["Bagages", "≈ 5,4 m³"], ["Vol type", "Jusqu’à 17 heures"]],
       cabin: [["Longueur cabine", "16,6 m"], ["Largeur cabine", "2,44 m"], ["Hauteur cabine", "1,88 m"]]

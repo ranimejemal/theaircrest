@@ -1,6 +1,6 @@
 # THE AIRCREST
 
-Website for THE AIRCREST, a Paris-based private jet charter broker.
+Website for THE AIRCREST, a Tunisia-based private jet charter broker.
 Static site hosted on Vercel: every push to `main` is deployed automatically.
 
 ## Pages
@@ -41,8 +41,8 @@ Follow the 5 setup steps at the top of `integrations/google-sheet/Code.gs`, then
 
 ## WhatsApp
 
-A WhatsApp button (bottom right, both languages) opens a chat with +33 6 24 97 99 41 and a pre-filled
-message. To change the number, edit the `wa.me/33624979941` link at the end of `index.html` and `fr/index.html`.
+A WhatsApp button (bottom right, both languages) opens a chat with +216 97 017 061 and a pre-filled
+message. To change the number, edit the `wa.me/21697017061` link at the end of `index.html` and `fr/index.html`.
 
 ## Fleet
 

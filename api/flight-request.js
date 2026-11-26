@@ -22,7 +22,7 @@ import nodemailer from "nodemailer";
 const env = (k, d = "") => (process.env[k] ?? d).trim();
 const SITE = "https://theaircrest.vercel.app";
 const LOGO = `${SITE}/assets/logo/aircrest-logo-full-white.png`;
-const PHONE = "+33 6 24 97 99 41";
+const PHONE = "+216 97 017 061";
 const CHERRY = "#390B16", OBSIDIAN = "#080608", SOFT = "#F5F2F2", MUTED = "#7E7C7D";
 
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
@@ -55,7 +55,7 @@ export function layout(title, intro, rows, footer, button) {
         ${btn}
       </td></tr>
       <tr><td style="padding:24px 40px 32px;font:400 12px/1.6 Arial,Helvetica,sans-serif;color:${MUTED}">${footer}</td></tr>
-      <tr><td style="background:${OBSIDIAN};padding:16px 40px;font:600 11px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#FFFFFF">THE AIRCREST · Paris</td></tr>
+      <tr><td style="background:${OBSIDIAN};padding:16px 40px;font:600 11px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#FFFFFF">THE AIRCREST · Tunisie</td></tr>
     </table>
   </td></tr></table></body></html>`;
 }
@@ -102,7 +102,7 @@ export function buildEmails(r, from, notifyTo, when = new Date()) {
         ["Appareil consulté", esc(r.aircraft || "Sans préférence")],
         ["Langue du client", r.lang === "fr" ? "Français" : "Anglais"],
       ],
-      `Reçue le ${when.toLocaleString("fr-FR", { timeZone: "Europe/Paris" })} depuis theaircrest.vercel.app. Répondez à cet e-mail pour écrire directement au client.`,
+      `Reçue le ${when.toLocaleString("fr-FR", { timeZone: "Africa/Tunis" })} depuis theaircrest.vercel.app. Répondez à cet e-mail pour écrire directement au client.`,
       { href: `mailto:${r.email}?subject=${encodeURIComponent("THE AIRCREST · " + route)}`, label: "Répondre au client" },
     ),
   };
