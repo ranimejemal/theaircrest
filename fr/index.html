@@ -211,6 +211,48 @@ img{filter:grayscale(1)}
   .pop-up_cta_modal_desc .w-form-label{font-size:10px!important}
   .pop-up_cta_modal_title .h4{font-size:30px}
 }
+</style><style id="aircrest-form-polish">
+/* Date fields: readable hint / formatted date on every device (iOS shows nothing in empty date inputs) */
+.pop-up_cta_form-block_form .aircrest-date-w{position:relative}
+.pop-up_cta_form-block_form .aircrest-date-w .input_label{z-index:2}
+.pop-up_cta_form-block_form .aircrest-date-w input[type=date]::-webkit-datetime-edit-day-field:focus,.pop-up_cta_form-block_form .aircrest-date-w input[type=date]::-webkit-datetime-edit-month-field:focus,.pop-up_cta_form-block_form .aircrest-date-w input[type=date]::-webkit-datetime-edit-year-field:focus{background:transparent;color:transparent}
+.pop-up_cta_form-block_form .aircrest-date-w input[type=date]::selection{background:transparent}
+.pop-up_cta_form-block_form .aircrest-date-w input[type=date]::-webkit-datetime-edit-fields-wrapper{opacity:0}
+.pop-up_cta_form-block_form .aircrest-date-w input[type=date]{color:transparent!important;-webkit-text-fill-color:transparent;caret-color:transparent;position:relative;cursor:pointer}
+.pop-up_cta_form-block_form .aircrest-date-w input[type=date]::-webkit-datetime-edit{color:transparent}
+.pop-up_cta_form-block_form .aircrest-date-w input[type=date]::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:auto;height:auto;opacity:0;cursor:pointer}
+.pop-up_cta_form-block_form .aircrest-date{position:absolute;left:var(--aircrest-date-left,12px);right:28px;bottom:var(--aircrest-date-bottom,6px);pointer-events:none;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--_colors---base-1000--100);font:inherit}
+.pop-up_cta_form-block_form .aircrest-date.is-empty{color:var(--_colors---base-1000--30)}
+.pop-up_cta_form-block_form .aircrest-date-w::after{content:"";position:absolute;right:4px;bottom:calc(var(--aircrest-date-bottom,6px) + .1em);width:14px;height:14px;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23390B16' stroke-width='1.3'%3E%3Crect x='2' y='3' width='12' height='11' rx='1.5'/%3E%3Cpath d='M2 6.5h12M5.5 1.5v3M10.5 1.5v3'/%3E%3C/svg%3E") no-repeat center/contain}
+
+/* Phones + tablets: full-width send button, tidy consent line, smaller close button */
+@media screen and (max-width:991px){
+  .pop-up_cta_modal_btn{justify-content:stretch!important;align-items:stretch!important}
+  .pop-up_cta_modal_btn .btn-submit{width:100%;margin:0;padding:0 20px;min-height:50px;border:0;border-radius:999px;background:#390B16;
+    display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;transform:none!important}
+  .pop-up_cta_modal_btn .btn-submit_btn-icon{width:18px!important;height:18px!important;padding:0!important;background:transparent!important}
+  .pop-up_cta_modal_btn .btn-submit .d-none{display:block!important;color:#FFFFFF;font-family:var(--_fonts---font-body);font-weight:700;font-size:15px;letter-spacing:-.01em}
+  .pop-up_cta_modal_btn .btn-submit:active{opacity:.85}
+  .pop-up_cta_modal_desc{grid-row:auto!important;grid-column:1/-1!important;width:100%;max-width:none!important}
+  .pop-up_cta_modal_desc .radio-item{width:100%}
+  .pop-up_cta_modal_desc .w-form-label{flex:1 1 auto;max-width:none!important;text-align:left!important}
+  .pop-up_cta_modal_desc .radio-item{flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;text-align:left!important;gap:10px;cursor:pointer}
+  .pop-up_cta_modal_desc .radio-item .unit-12{display:none}
+  .pop-up_cta_modal_desc .radio{width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important;margin:0!important;flex:none}
+  .pop-up_cta_modal_desc .w-form-label{font-size:11px!important;line-height:1.4}
+  .btn-cta-close .btn-cta_btn-icon{width:44px!important;height:44px!important;padding:13px!important}
+  .btn-cta-close{padding:4px!important}
+}
+@media screen and (max-width:479px){
+  .pop-up_cta_modal_btn .btn-submit{min-height:46px}
+  .pop-up_cta_modal_btn{padding-top:12px!important}
+}
+@media screen and (min-width:480px) and (max-width:991px){
+  .pop-up_cta_form-block_form{--aircrest-date-bottom:7px}
+  .pop-up_cta_form-block_form .aircrest-date{font-size:17px}
+}
 </style></head><body class="body"><div data-barba="wrapper" class="transition-wrapper"><div data-barba-namespace="home" data-barba="container" class="transition-container clip"><div preloader="" class="preloader bg-grad"><div class="preloader_c"><div class="container"><div class="grid _21-columns"><div data-prevent-flicker="true" data-split-text="lines" data-reveal-text="preloader" id="w-node-eddf7e61-453a-f992-3d91-d4cca023add1-9b251e8a" class="preloader_info"><div class="l1 text-light a-center">The Aircrest</div><div class="unit-12"></div><div class="p5 text-light a-center">Aviation privée d’exception</div></div></div></div></div><div preloader-bg="" class="preloader_bg"><div class="preloader_bg_grad"></div><div class="style-css w-embed"><style>
 .preloader_bg{
   -webkit-mask-image: url('/assets/ui/globe-mask.webp');
@@ -565,7 +607,7 @@ img{filter:grayscale(1)}
   }
 </style></div></div></div></div><div class="unit-36"></div></div><div pop-up="cta" class="pop-up_cta"><div class="pop-up_cta_form-block w-form"><form id="wf-form-Book-the-Flight" name="wf-form-Book-the-Flight" data-name="Request a Flight" method="post" action="https://formsubmit.co/ranimejmal@gmail.com" class="pop-up_cta_form-block_form" data-wf-page-id="aed1640a62b81cca8e4b1a8b" data-wf-element-id="e860fd8d-d6f4-df35-c8d6-61f34af58026"><div pop-up-main="cta" class="pop-up_cta_c"><div class="pop-up_cta_modal"><div class="grid _21-columns"><div id="w-node-f8de1707-244f-4221-c727-4fcce660691f-9b251e8a" class="aircrest-f-title pop-up_cta_modal_title"><h5 class="h4">Contact</h5><div class="unit-36 b-mobile"></div></div><div id="w-node-f8de1707-244f-4221-c727-4fcce6606922-9b251e8a" class="aircrest-f-name input"><div class="input_label"><label for="" class="l1">Nom</label></div><input class="input_field p6 w-input" maxlength="256" name="Name" data-name="Name" placeholder="Votre nom..." type="text" id="Name" required=""/></div><div id="w-node-f8de1707-244f-4221-c727-4fcce6606927-9b251e8a" class="aircrest-f-email input"><div class="input_label"><label for="" class="l1">e-mail</label></div><input class="input_field p6 w-input" maxlength="256" name="Email" data-name="Email" placeholder="E-mail..." type="email" id="Email" required=""/></div><div id="w-node-f8de1707-244f-4221-c727-4fcce660692c-9b251e8a" class="aircrest-f-phone input"><div class="input_label"><label for="" class="l1">Téléphone</label></div><input class="input_field p6 w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Téléphone..." type="tel" id="Phone" required=""/></div><div class="input aircrest-f aircrest-f-pax"><div class="input_label"><label for="Passengers" class="l1">Passagers</label></div><input class="input_field p6 w-input" maxlength="256" name="Passengers" data-name="Passengers" placeholder="Combien..." type="number" id="Passengers" required="" min="1" max="50" inputmode="numeric"/></div><div class="input aircrest-f aircrest-f-from"><div class="input_label"><label for="From" class="l1">Départ</label></div><select class="input_field p6" name="From" data-name="From" id="From" required=""><option value="" disabled selected>Choisir un pays</option></select></div><div class="input aircrest-f aircrest-f-to"><div class="input_label"><label for="To" class="l1">Arrivée</label></div><select class="input_field p6" name="To" data-name="To" id="To" required=""><option value="" disabled selected>Choisir un pays</option></select></div><div class="input aircrest-f aircrest-f-dep"><div class="input_label"><label for="Departure-date" class="l1">Date de départ</label></div><input class="input_field p6 w-input" maxlength="256" name="Departure-date" data-name="Departure-date" placeholder="" type="date" id="Departure-date" required=""/></div><div class="input aircrest-f aircrest-f-ret"><div class="input_label"><label for="Return-date" class="l1">Date de retour</label></div><input class="input_field p6 w-input" maxlength="256" name="Return-date" data-name="Return-date" placeholder="" type="date" id="Return-date"/></div><input type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/><input type="hidden" name="Aircraft" id="Aircraft" value="Sans préférence"/><div id="w-node-f8de1707-244f-4221-c727-4fcce6606936-9b251e8a" class="aircrest-f-btn pop-up_cta_modal_btn"><a data-magnetic-strength="" data-form-btn="" href="#" class="btn-submit w-inline-block"><div class="btn-submit_btn-icon"><div class="btn-cta_btn-icon_icon"><div class="ico-20 on-color w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.0354 9.33333L6.66699 14.6667L5.33366 14.6667L7.01786 9.33333L3.44479 9.33333L2.33366 11.3333L1.33366 11.3333L2.00033 8.33333L1.33366 5.33333L2.33366 5.33333L3.44479 7.33333L7.01786 7.33333L5.33366 2L6.66699 2L10.0354 7.33333L13.667 7.33333C14.2193 7.33333 14.667 7.78107 14.667 8.33333C14.667 8.8856 14.2193 9.33333 13.667 9.33333L10.0354 9.33333Z" fill="currentColor"/>
-</svg></div></div></div><div class="d-none">Envoyer</div></a></div></div><div class="unit-36"></div><div class="grid _21-columns"><div id="w-node-_273aa250-0363-f3df-4bdd-6f70bf523f28-9b251e8a" class="pop-up_cta_modal_desc"><label class="w-checkbox radio-item"><div class="w-checkbox-input w-checkbox-input--inputType-custom radio"></div><input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" required="" style="opacity:0;position:absolute;z-index:-1"/><div class="unit-12 b-mobile"></div><span class="l1 text-gray w-form-label" for="checkbox">En envoyant ce formulaire, vous acceptez notre <a href="/fr/confidentialite.html" target="_blank" class="link-basic text-gray">politique de confidentialité</a></span></label></div></div></div><div class="unit-36"></div></div></form><div pop-up-success="cta" class="pop-up_cta_form-block_success w-form-done"><div class="pop-up_cta_form-block_success_c"><div class="unit-96"></div><div class="grid _21-columns fill"><div id="w-node-_29acd6b3-f78f-b6d7-a951-8ffdc9a12e1a-9b251e8a" class="form-success_card"><div class="card_bg-white"></div><div class="card_c"><div class="form-success_card_top"><div class="form-success_card_top_name"><div class="l1"><span class="text-gray">vol : </span><strong data-ticket-route="">Vol en jet privé</strong></div></div><div class="unit-4"></div><div class="form-success_card_bar-code w-embed"><svg width="100%" height="100%" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+</svg></div></div></div><div class="d-none">Envoyer la demande</div></a></div></div><div class="unit-36"></div><div class="grid _21-columns"><div id="w-node-_273aa250-0363-f3df-4bdd-6f70bf523f28-9b251e8a" class="pop-up_cta_modal_desc"><label class="w-checkbox radio-item"><div class="w-checkbox-input w-checkbox-input--inputType-custom radio"></div><input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" required="" style="opacity:0;position:absolute;z-index:-1"/><div class="unit-12 b-mobile"></div><span class="l1 text-gray w-form-label" for="checkbox">En envoyant ce formulaire, vous acceptez notre <a href="/fr/confidentialite.html" target="_blank" class="link-basic text-gray">politique de confidentialité</a></span></label></div></div></div><div class="unit-36"></div></div></form><div pop-up-success="cta" class="pop-up_cta_form-block_success w-form-done"><div class="pop-up_cta_form-block_success_c"><div class="unit-96"></div><div class="grid _21-columns fill"><div id="w-node-_29acd6b3-f78f-b6d7-a951-8ffdc9a12e1a-9b251e8a" class="form-success_card"><div class="card_bg-white"></div><div class="card_c"><div class="form-success_card_top"><div class="form-success_card_top_name"><div class="l1"><span class="text-gray">vol : </span><strong data-ticket-route="">Vol en jet privé</strong></div></div><div class="unit-4"></div><div class="form-success_card_bar-code w-embed"><svg width="100%" height="100%" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 1.14441e-05L1.4382 1.13812e-05L1.4382 24H0L0 1.14441e-05Z" fill="currentColor"/>
 <path d="M2.1573 5.7535e-06L2.8764 5.72206e-06L2.8764 24H2.1573L2.1573 5.7535e-06Z" fill="currentColor"/>
 <path d="M4.31461 5.05662e-06L5.03371 5.02519e-06L5.03371 22H4.31461L4.31461 5.05662e-06Z" fill="currentColor"/>
@@ -685,4 +727,20 @@ document.addEventListener("DOMContentLoaded",function(){
 var c=[].slice.call(document.querySelectorAll('[pop-up-open="cta"]')).map(function(e){return e.getBoundingClientRect()}).filter(function(b){return b.width>0&&b.bottom>innerHeight/2})[0];
 if(!c)return;var mid=innerHeight-(c.top+c.height/2);w.style.setProperty("--aircrest-wa-bottom",Math.max(8,Math.round(mid-w.offsetHeight/2))+"px");}
 window.addEventListener("load",function(){a();setTimeout(a,1500);setTimeout(a,4000);});window.addEventListener("resize",a);})();
+</script><script>
+/* Date fields: show a hint when empty and a readable date once chosen */
+document.addEventListener("DOMContentLoaded",function(){
+  var fr=(document.documentElement.lang||"").slice(0,2)==="fr";
+  var fmt;try{fmt=new Intl.DateTimeFormat(fr?"fr-FR":"en-GB",{day:"2-digit",month:"2-digit",year:"numeric",timeZone:"UTC"});}catch(e){fmt=null;}
+  [["Departure-date",fr?"Choisir une date":"Select a date"],["Return-date",fr?"Facultatif":"Optional"]].forEach(function(d){
+    var i=document.getElementById(d[0]);if(!i)return;var w=i.closest(".input");if(!w)return;
+    w.classList.add("aircrest-date-w");var s=document.createElement("span");s.className="aircrest-date";s.setAttribute("aria-hidden","true");w.appendChild(s);
+    var cs=getComputedStyle(i);s.style.fontSize=cs.fontSize;s.style.left=cs.paddingLeft;
+    function u(){var v=i.value;if(v){var dt=new Date(v+"T12:00:00Z");s.textContent=fmt?fmt.format(dt):v;s.classList.remove("is-empty");}else{s.textContent=d[1];s.classList.add("is-empty");}}
+    i.addEventListener("input",u);i.addEventListener("change",u);
+    i.addEventListener("click",function(){try{i.showPicker&&i.showPicker();}catch(e){}});
+    window.addEventListener("resize",function(){var c=getComputedStyle(i);s.style.fontSize=c.fontSize;s.style.left=c.paddingLeft;});
+    u();
+  });
+});
 </script></body></html>
